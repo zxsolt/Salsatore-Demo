@@ -6,8 +6,13 @@
   <meta name="description" content="Demo visual de Salsatore Dance Studio: salsa, bachata y kizomba en Almería y Aguadulce.">
   <title>Salsatore Dance Studio — Demo</title>
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/spectacle.css">
 </head>
 <body>
+  <div class="show-intro" aria-hidden="true">
+    <img src="assets/images/logo-color.png" alt="">
+    <span>Almería baila</span>
+  </div>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header" data-site-header>
     <div class="header-shell">
@@ -25,31 +30,38 @@
       <div class="hero-media" aria-hidden="true"><img src="assets/images/hero-dance-v2.jpg" alt="" fetchpriority="high"></div>
       <div class="hero-shell">
         <div class="hero-copy">
-          <p class="hero-kicker">Salsa, bachata y kizomba</p>
-          <h1 id="hero-title">Tu semana pide <span>baile.</span></h1>
-          <p class="hero-lead">Aprende desde cero, conoce gente y disfruta la pista desde tu primera clase.</p>
+          <p class="hero-kicker">Salsa · bachata · kizomba</p>
+          <h1 id="hero-title">Tu semana pide baile</h1>
+          <p class="hero-lead">Una academia que se vive como un espectáculo. Empieza desde cero y sal a la pista.</p>
           <div class="hero-actions"><button class="button button--primary" type="button" data-open-booking>Reservar una prueba</button><a class="text-link" href="#clases">Ver clases</a></div>
         </div>
+      </div>
+      <p class="hero-stamp" aria-hidden="true">Dance studio · Almería</p>
+    </section>
 
-        <div class="social-stage" id="novedades" data-carousel aria-label="Novedades de Salsatore">
-          <div class="social-track" data-carousel-track>
-            <article class="social-card is-active" data-slide aria-hidden="false">
-              <div class="social-visual"><img src="assets/images/hero-dance-v2.jpg" alt="Pareja bailando salsa"></div>
-              <div class="social-content"><div class="social-topline"><span>@salsatore</span><span>17 AGO</span></div><h2>Una nueva temporada para bailarla contigo.</h2><p>Salsa, bachata y clases para todos los niveles.</p></div>
-            </article>
-            <article class="social-card" data-slide aria-hidden="true">
-              <div class="social-visual"><img src="assets/images/academy-class-v2.jpg" alt="Clase de baile en grupo" loading="lazy"></div>
-              <div class="social-content"><div class="social-topline"><span>@salsatore</span><span>10 MAY</span></div><h2>La pista se disfruta mejor entre todos.</h2><p>Aprende con calma, comparte el baile y disfruta del proceso.</p></div>
-            </article>
-            <article class="social-card" data-slide aria-hidden="true">
-              <div class="social-visual"><img src="assets/images/hero-dance-v2.jpg" alt="Pareja en una pista de baile" loading="lazy"></div>
-              <div class="social-content"><div class="social-topline"><span>@salsatore</span><span>HOY</span></div><h2>No necesitas saber bailar. Solo tener ganas.</h2><p>Elige sede, ritmo y horario para probar la experiencia.</p></div>
-            </article>
-          </div>
-          <div class="carousel-controls">
-            <button type="button" data-carousel-prev aria-label="Publicación anterior">←</button><p><span data-carousel-current>01</span><span>/</span><span data-carousel-total>03</span></p><button type="button" data-carousel-next aria-label="Publicación siguiente">→</button><button class="carousel-toggle" type="button" data-carousel-toggle aria-pressed="false">Pausar</button>
-          </div>
+    <section class="events-section" id="novedades" aria-labelledby="events-title" data-reveal>
+      <div class="section-shell">
+        <div class="events-heading">
+          <h2 id="events-title">Lo próximo se baila aquí.</h2>
+          <p>Tres formatos para mostrar cómo Salsatore puede convertir cada clase, social o exhibición en una cita con identidad propia.</p>
         </div>
+        <div class="event-posters">
+          <article class="event-poster event-poster--salsa">
+            <img src="assets/images/hero-dance-v2.jpg" alt="Pareja bailando salsa" loading="lazy">
+            <div class="event-poster__wash"></div>
+            <div class="event-poster__content"><p>Evento de muestra</p><h3>Salsa<br>session</h3><span>Ritmo · técnica · pista</span><button type="button" data-open-booking data-class="salsa">Quiero probar</button></div>
+          </article>
+          <article class="event-poster event-poster--bachata">
+            <img src="assets/images/academy-class-v2.jpg" alt="Clase de baile en grupo" loading="lazy">
+            <div class="event-poster__wash"></div>
+            <div class="event-poster__content"><p>Evento de muestra</p><h3>Bachata<br>open class</h3><span>Conexión · musicalidad · comunidad</span><button type="button" data-open-booking data-class="bachata">Quiero probar</button></div>
+          </article>
+          <article class="event-poster event-poster--social">
+            <div class="event-poster__type" aria-hidden="true">BAILA</div>
+            <div class="event-poster__content"><p>Evento de muestra</p><h3>Noche<br>social</h3><span>Almería · Aguadulce</span><button type="button" data-open-booking>Reservar una prueba</button></div>
+          </article>
+        </div>
+        <p class="events-note">Contenido orientativo para presentar el diseño; las fechas y la programación se añadirían cuando estén confirmadas.</p>
       </div>
     </section>
 
@@ -91,7 +103,7 @@
   <footer class="site-footer" id="contacto">
     <div class="footer-mark" aria-hidden="true">BAILA</div>
     <div class="footer-shell">
-      <div class="footer-brand"><img src="assets/images/logo-white.png" alt="Salsatore Dance Studio"><p>Baila. Conecta. Disfruta.</p></div>
+      <div class="footer-brand"><span class="footer-logo-plate"><img src="assets/images/logo-color.png" alt="Salsatore Dance Studio"></span><p>Baila. Conecta. Disfruta.</p></div>
       <div><p class="footer-label">Hablemos</p><a href="tel:+34667040252">+34 667 040 252</a><a href="mailto:salsatore@salsatore.com">salsatore@salsatore.com</a></div>
       <div><p class="footer-label">Sedes</p><p>Almería, C. Antonio Muñoz Zamora, 5</p><p>Aguadulce, Camino del Pocico</p></div>
       <div class="footer-action"><button class="button button--light" type="button" data-open-booking>Reservar una prueba</button><a class="instagram-link" href="https://www.instagram.com/salsatore/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
