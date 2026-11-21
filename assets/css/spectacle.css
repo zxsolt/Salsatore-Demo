@@ -20,14 +20,6 @@
     font-weight: 100 900;
     font-display: swap;
 }
-@font-face {
-    font-family: "Knewave";
-    src: url("../fonts/Knewave-Regular.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-}
-
 :root {
     --show-night: #120711;
     --show-night-2: #250823;
@@ -54,33 +46,6 @@
 
 body { font-family: var(--font-body); background: var(--show-white); }
 
-.show-intro {
-    position: fixed;
-    z-index: 999;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    align-content: center;
-    gap: var(--space-md);
-    color: var(--show-white);
-    background: var(--show-fuchsia);
-    pointer-events: none;
-    animation: show-intro-out 1.6s var(--ease-in-out) forwards;
-}
-.show-intro::before,
-.show-intro::after {
-    content: "";
-    position: absolute;
-    width: 42vw;
-    height: 42vw;
-    border: 1px solid rgba(255, 247, 251, .35);
-    border-radius: 50%;
-}
-.show-intro::before { transform: translate(-42%, -18%); }
-.show-intro::after { transform: translate(42%, 18%); }
-.show-intro img { width: min(390px, 72vw); padding: var(--space-md) var(--space-lg); border-radius: var(--radius-input); background: var(--show-white); box-shadow: 0 24px 70px rgba(18, 7, 17, .2); object-fit: contain; }
-.show-intro span { font-size: var(--text-sm); font-weight: 700; }
-
 .site-header { color: var(--show-white); }
 .header-shell { border-color: rgba(255, 247, 251, .28); }
 .site-nav a { color: rgba(255, 247, 251, .78); }
@@ -98,6 +63,20 @@ body { font-family: var(--font-body); background: var(--show-white); }
         radial-gradient(circle at 18% 72%, rgba(110, 247, 255, .34), transparent 34%),
         radial-gradient(circle at 78% 24%, rgba(233, 0, 168, .5), transparent 38%);
     mix-blend-mode: screen;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: min(72vw, 980px);
+    aspect-ratio: 1;
+    top: 4%;
+    left: 4%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 247, 251, .24) 0%, rgba(233, 0, 168, .14) 38%, transparent 70%);
+    filter: blur(18px);
+    mix-blend-mode: screen;
+    pointer-events: none;
 }
 .hero-media { z-index: -3; }
 .hero-media::after {
@@ -125,14 +104,16 @@ body { font-family: var(--font-body); background: var(--show-white); }
 .hero h1 {
     max-width: 10ch;
     color: var(--show-white);
-    font-family: "Knewave", var(--font-display);
-    font-size: clamp(4.5rem, 11vw, 9.6rem);
+    font-family: "Sansita Swashed", var(--font-display);
+    font-size: clamp(4.25rem, 10vw, 8.8rem);
     font-style: normal;
-    font-weight: 400;
-    letter-spacing: -.035em;
-    line-height: .84;
+    font-weight: 560;
+    letter-spacing: -.045em;
+    line-height: .78;
     text-shadow: 0 16px 50px rgba(18, 7, 17, .45);
 }
+.hero-title-line { display: block; opacity: 0; transform: translateY(32px) rotate(-1.5deg); }
+.hero-title-line--accent { margin-top: .06em; color: var(--show-white); transform: translateY(36px) rotate(1deg); }
 .hero-lead { max-width: 48ch; margin: var(--space-xl) auto var(--space-lg); color: var(--show-white); font-size: clamp(1.05rem, 1.6vw, 1.28rem); }
 .hero-actions { justify-content: center; }
 .hero .button--primary { color: var(--show-ink); background: var(--show-cyan); box-shadow: 0 10px 36px rgba(110, 247, 255, .22); }
@@ -268,7 +249,7 @@ body { font-family: var(--font-body); background: var(--show-white); }
 .event-poster__type {
     position: static;
     color: rgba(255, 255, 255, .92);
-    font-family: "Knewave", var(--font-display);
+    font-family: "Sansita Swashed", var(--font-display);
     font-size: clamp(5rem, 9vw, 8rem);
     font-style: normal;
     font-weight: 400;
@@ -280,10 +261,10 @@ body { font-family: var(--font-body); background: var(--show-white); }
 .event-poster h3 {
     max-width: 14ch;
     color: var(--show-ink);
-    font-family: "Knewave", var(--font-display);
+    font-family: "Sansita Swashed", var(--font-display);
     font-size: clamp(2.2rem, 3.1vw, 3.25rem);
     font-style: normal;
-    font-weight: 400;
+    font-weight: 620;
     letter-spacing: -.025em;
     line-height: .95;
 }
@@ -293,9 +274,31 @@ body { font-family: var(--font-body); background: var(--show-white); }
 .event-poster button:hover,
 .event-poster__action:hover { color: var(--show-white); background: var(--show-fuchsia-dark); }
 
-@keyframes show-intro-out {
-    0%, 58% { opacity: 1; transform: none; }
-    100% { opacity: 0; transform: scale(1.035); visibility: hidden; }
+@keyframes hero-line-in {
+    from { opacity: 0; transform: translateY(32px) rotate(-1.5deg); }
+    to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+@keyframes hero-line-accent-in {
+    from { opacity: 0; transform: translateY(36px) rotate(1deg); }
+    to { opacity: 1; transform: translateY(0) rotate(-1deg); }
+}
+
+@keyframes hero-camera {
+    from { transform: scale(1.035) translate3d(0, 0, 0); }
+    to { transform: scale(1.09) translate3d(-1.2%, -.8%, 0); }
+}
+
+@keyframes hero-light-sweep {
+    from { opacity: .46; transform: translate3d(-14%, 8%, 0) scale(.88); }
+    to { opacity: .86; transform: translate3d(38%, -10%, 0) scale(1.12); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero-title-line { animation: hero-line-in .9s .22s var(--ease-out) forwards; }
+    .hero-title-line--accent { animation-name: hero-line-accent-in; animation-delay: .4s; }
+    .hero-media img { animation: hero-camera 14s .08s ease-in-out both alternate; }
+    .hero::after { animation: hero-light-sweep 8s .08s ease-in-out both alternate infinite; }
 }
 
 @media (max-width: 55rem) {
@@ -331,6 +334,8 @@ body { font-family: var(--font-body); background: var(--show-white); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .show-intro { display: none; }
     .event-poster { transition: none; }
+    .hero-title-line { opacity: 1; transform: none; }
+    .hero-media img,
+    .hero::after { animation: none; transform: none; }
 }
