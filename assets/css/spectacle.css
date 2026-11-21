@@ -162,9 +162,12 @@ body { font-family: var(--font-body); background: var(--show-white); }
 .event-poster__content > p { margin: 0 0 var(--space-md); color: var(--show-cyan); font-size: var(--text-sm); font-weight: 700; }
 .event-poster h3 { max-width: 8ch; color: var(--show-white); font-size: clamp(3.5rem, 5.3vw, 5.4rem); font-style: italic; font-weight: 820; letter-spacing: -.055em; line-height: .76; }
 .event-poster__content > span { display: block; margin-top: var(--space-lg); color: rgba(255, 247, 251, .78); font-size: var(--text-sm); }
-.event-poster button { min-height: 45px; margin-top: var(--space-lg); padding: 0 var(--space-lg); color: var(--show-ink); border: 0; background: var(--show-cyan); cursor: pointer; font-weight: 750; transition: color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
-.event-poster button:hover { color: var(--show-white); background: var(--show-fuchsia); }
-.event-poster button:active { transform: translateY(1px); }
+.event-poster button,
+.event-poster__action { min-height: 45px; margin-top: var(--space-lg); padding: 0 var(--space-lg); display: inline-flex; align-items: center; color: var(--show-ink); border: 0; background: var(--show-cyan); cursor: pointer; font-weight: 750; text-decoration: none; transition: color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.event-poster button:hover,
+.event-poster__action:hover { color: var(--show-white); background: var(--show-fuchsia); }
+.event-poster button:active,
+.event-poster__action:active { transform: translateY(1px); }
 .event-poster--social { background: linear-gradient(145deg, var(--show-blue) 0%, var(--show-fuchsia) 100%); }
 .event-poster--social::before { content: ""; position: absolute; inset: 24px; border: 1px solid rgba(255, 247, 251, .45); }
 .event-poster__type { position: absolute; top: 12px; left: -22px; color: rgba(255, 247, 251, .15); font-family: var(--font-display); font-size: 10rem; font-style: italic; font-weight: 900; line-height: .8; transform: rotate(-7deg); }
