@@ -143,7 +143,7 @@ body { font-family: var(--font-body); background: var(--show-white); }
 .hero-title-line { display: block; opacity: 0; transform: translateY(32px) rotate(-1.5deg); }
 .hero-title-line--accent { margin-top: .06em; color: var(--show-white); transform: translateY(36px) rotate(1deg); }
 .hero-lead { max-width: 38ch; margin: var(--space-xl) auto var(--space-lg); color: var(--show-white); font-size: clamp(1.05rem, 1.6vw, 1.28rem); }
-.hero-actions { justify-content: center; }
+.hero-actions { margin-top: var(--space-xl); justify-content: center; }
 .hero .button--primary { color: var(--show-ink); background: var(--show-cyan); box-shadow: 0 10px 36px rgba(110, 247, 255, .22); }
 .hero .button--primary:hover { color: var(--show-white); background: var(--show-fuchsia); }
 .hero .text-link { color: var(--show-white); border-color: rgba(255, 247, 251, .6); }
