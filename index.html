@@ -20,7 +20,7 @@
       <nav class="site-nav" id="site-nav" aria-label="Navegación principal" data-site-nav>
         <a href="#clases">Clases</a><a href="#horarios">Horarios</a><a href="#academia">Academia</a><a href="#novedades">Novedades</a><a href="#contacto">Contacto</a>
       </nav>
-      <button class="button button--header" type="button" data-open-booking>Reservar una prueba</button>
+      <button class="button button--header" type="button" data-open-booking>Reservar</button>
     </div>
   </header>
 
@@ -43,16 +43,16 @@
         </div>
         <div class="event-posters">
           <article class="event-poster event-poster--salsa">
-            <div class="event-poster__media"><img src="assets/images/hero-dance-v2.jpg" alt="Pareja bailando salsa" loading="lazy"><span>Destacado</span></div>
-            <div class="event-poster__content"><p>Próximamente · Almería</p><h3>Salsa session</h3><span>Ritmo, técnica y pista para todos los niveles.</span><button type="button" data-open-booking data-class="salsa">Quiero probar</button></div>
+            <div class="event-poster__media"><img src="assets/images/hero-dance-v2.jpg" alt="Pareja bailando salsa" loading="lazy"><span>Evento</span></div>
+            <div class="event-poster__content"><p>Próximamente · Almería</p><h3>Salsa session</h3><span>Una sesión especial para disfrutar de la música, la técnica y la pista.</span><button type="button" data-open-booking data-booking-type="event" data-event="event-1">Reservar plaza</button></div>
           </article>
           <article class="event-poster event-poster--bachata">
-            <div class="event-poster__media"><img src="assets/images/academy-class-v2.jpg" alt="Clase de baile en grupo" loading="lazy"><span>Nueva clase</span></div>
-            <div class="event-poster__content"><p>Próximamente · Aguadulce</p><h3>Bachata open class</h3><span>Conexión, musicalidad y comunidad desde la primera clase.</span><button type="button" data-open-booking data-class="bachata">Quiero probar</button></div>
+            <div class="event-poster__media"><img src="assets/images/academy-class-v2.jpg" alt="Clase especial de bachata" loading="lazy"><span>Evento</span></div>
+            <div class="event-poster__content"><p>Próximamente · Aguadulce</p><h3>Bachata open class</h3><span>Una clase abierta para conocer la academia y bailar desde el primer día.</span><button type="button" data-open-booking data-booking-type="event" data-event="event-2">Reservar plaza</button></div>
           </article>
           <article class="event-poster event-poster--social">
-            <div class="event-poster__media event-poster__media--graphic"><div class="event-poster__type" aria-hidden="true">BAILA</div><span>Social</span></div>
-            <div class="event-poster__content"><p>Próximamente · Almería</p><h3>Noche social</h3><span>Una noche de salsa, bachata y kizomba para compartir pista.</span><button type="button" data-open-booking>Reservar una prueba</button></div>
+            <div class="event-poster__media event-poster__media--graphic"><div class="event-poster__type" aria-hidden="true">BAILA</div><span>Evento</span></div>
+            <div class="event-poster__content"><p>Próximamente · Almería</p><h3>Noche social</h3><span>Una noche para compartir pista, conocer gente y bailar sin prisas.</span><button type="button" data-open-booking data-booking-type="event" data-event="event-3">Reservar plaza</button></div>
           </article>
         </div>
         <p class="events-note">Contenido orientativo para presentar el diseño; las fechas y la programación se añadirían cuando estén confirmadas.</p>
@@ -63,9 +63,23 @@
       <div class="section-shell">
         <div class="section-heading"><h2 id="classes-title">Encuentra tu ritmo.</h2><p><strong>Tres formas de entrar en la pista.</strong> Empieza desde cero o sigue creciendo con una progresión clara y un ambiente cercano.</p></div>
         <div class="class-grid">
-          <article class="class-card class-card--salsa"><img src="assets/images/hero-dance-v2.jpg" alt="Pareja bailando salsa en el estudio" loading="lazy"><div class="class-card__scrim"></div><div class="class-card__content"><h3>Salsa</h3><p>Energía y musicalidad</p><button type="button" data-open-booking data-class="salsa">Probar salsa</button></div></article>
-          <article class="class-card class-card--bachata"><img src="assets/images/academy-class-v2.jpg" alt="Clase de bachata en grupo" loading="lazy"><div class="class-card__scrim"></div><div class="class-card__content"><h3>Bachata</h3><p>Conexión y sensibilidad</p><button type="button" data-open-booking data-class="bachata">Probar bachata</button></div></article>
-          <article class="class-card class-card--kizomba"><div class="class-card__pattern" aria-hidden="true">K</div><div class="class-card__content"><h3>Kizomba</h3><p>Calma y conexión</p><button type="button" data-open-booking data-class="kizomba">Probar kizomba</button></div></article>
+          <article class="class-card class-card--salsa"><img src="assets/images/hero-dance-v2.jpg" alt="Pareja bailando salsa en el estudio" loading="lazy"><div class="class-card__scrim"></div><div class="class-card__content"><h3>Salsa</h3><p>Energía y musicalidad</p><button type="button" data-open-booking data-booking-type="class" data-class="salsa">Ver clases</button></div></article>
+          <article class="class-card class-card--bachata"><img src="assets/images/academy-class-v2.jpg" alt="Clase de bachata en grupo" loading="lazy"><div class="class-card__scrim"></div><div class="class-card__content"><h3>Bachata</h3><p>Conexión y sensibilidad</p><button type="button" data-open-booking data-booking-type="class" data-class="bachata">Ver clases</button></div></article>
+          <article class="class-card class-card--kizomba"><div class="class-card__pattern" aria-hidden="true">K</div><div class="class-card__content"><h3>Kizomba</h3><p>Calma y conexión</p><button type="button" data-open-booking data-booking-type="class" data-class="kizomba">Ver clases</button></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="social-section" aria-labelledby="social-title" data-reveal>
+      <div class="section-shell social-layout">
+        <div class="social-copy"><p class="section-eyebrow">Facebook</p><h2 id="social-title">Lo último en Salsatore.</h2><p>Clases, momentos de la academia y novedades publicadas recientemente.</p></div>
+        <div class="social-stage" data-carousel aria-label="Publicaciones recientes">
+          <div class="social-track">
+            <article class="social-card is-active" data-slide aria-hidden="false"><div class="social-visual"><img src="assets/images/hero-dance-v2.jpg" alt="" loading="lazy"></div><div class="social-content"><div class="social-topline"><span>@salsatore</span><span>17 AGO</span></div><h3>Nueva temporada</h3><p>Volvemos a la pista con clases para todos los niveles.</p><a href="https://www.facebook.com/salsatore.almeria/" target="_blank" rel="noopener noreferrer">Ver publicación</a></div></article>
+            <article class="social-card" data-slide aria-hidden="true"><div class="social-visual"><img src="assets/images/academy-class-v2.jpg" alt="" loading="lazy"></div><div class="social-content"><div class="social-topline"><span>@salsatore</span><span>10 MAY</span></div><h3>Aprender juntos</h3><p>Un vistazo a las clases y al ambiente de la academia.</p><a href="https://www.facebook.com/salsatore.almeria/" target="_blank" rel="noopener noreferrer">Ver publicación</a></div></article>
+            <article class="social-card" data-slide aria-hidden="true"><div class="social-visual"><img src="assets/images/hero-dance-v2.jpg" alt="" loading="lazy"></div><div class="social-content"><div class="social-topline"><span>@salsatore</span><span>03 ABR</span></div><h3>Nos vemos bailando</h3><p>Novedades y momentos recientes de Salsatore Almería.</p><a href="https://www.facebook.com/salsatore.almeria/" target="_blank" rel="noopener noreferrer">Ver publicación</a></div></article>
+          </div>
+          <div class="carousel-controls"><button type="button" data-carousel-prev aria-label="Publicación anterior">←</button><p><span data-carousel-current>01</span><span>/</span><span data-carousel-total>03</span></p><button type="button" data-carousel-next aria-label="Publicación siguiente">→</button><button class="carousel-toggle" type="button" data-carousel-toggle aria-pressed="false">Pausar</button></div>
         </div>
       </div>
     </section>
@@ -91,7 +105,7 @@
       </div>
     </section>
 
-    <section class="trial-section" aria-labelledby="trial-title" data-reveal><div class="trial-shell"><h2 id="trial-title">Tu primer paso empieza aquí.</h2><p>Elige sede, ritmo y horario en menos de un minuto.</p><button class="button button--light button--large" type="button" data-open-booking>Reservar una prueba</button></div></section>
+    <section class="trial-section" aria-labelledby="trial-title" data-reveal><div class="trial-shell"><h2 id="trial-title">Tu primer paso empieza aquí.</h2><p>Elige una clase o reserva tu plaza para el próximo evento.</p><button class="button button--light button--large" type="button" data-open-booking>Empezar reserva</button></div></section>
   </main>
 
   <footer class="site-footer" id="contacto">
@@ -108,15 +122,16 @@
   <div class="booking-modal" data-booking-modal hidden>
     <div class="booking-backdrop" data-close-booking></div>
     <section class="booking-panel" role="dialog" aria-modal="true" aria-labelledby="booking-title" tabindex="-1" data-booking-panel>
-      <header class="booking-header"><div><h2 id="booking-title">Encuentra tu clase de prueba</h2></div><button type="button" class="booking-close" data-close-booking aria-label="Cerrar reserva">×</button></header>
-      <div class="booking-progress"><div class="booking-progress-bar" role="progressbar" aria-label="Progreso de la reserva" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"><span data-booking-progress></span></div><p><span data-step-label>Sede</span><strong><span data-step-current>1</span>/5</strong></p></div>
+      <header class="booking-header"><div><h2 id="booking-title">Reserva tu plaza</h2></div><button type="button" class="booking-close" data-close-booking aria-label="Cerrar reserva">×</button></header>
+      <div class="booking-progress"><div class="booking-progress-bar" role="progressbar" aria-label="Progreso de la reserva" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1"><span data-booking-progress></span></div><p><span data-step-label>Reserva</span><strong><span data-step-current>1</span>/6</strong></p></div>
       <div class="demo-notice"><span>i</span><p>Demostración: tus datos no se enviarán ni se guardarán.</p></div>
       <form class="booking-form" data-booking-form novalidate>
-        <div class="booking-step is-active" data-booking-step="1"><fieldset><legend>¿Dónde quieres bailar?</legend><p>Elige la sede que te viene mejor.</p><div class="choice-grid" data-location-choices></div></fieldset></div>
-        <div class="booking-step" data-booking-step="2"><fieldset><legend>¿Qué te apetece aprender?</legend><p>Elige ritmo y nivel. Puedes cambiarlo después.</p><div class="choice-grid choice-grid--classes" data-class-choices></div><div class="level-choices" data-level-choices></div></fieldset></div>
-        <div class="booking-step" data-booking-step="3"><fieldset><legend>Elige un horario</legend><p>Disponibilidad ficticia para probar la interfaz.</p><div class="slot-grid" data-slot-choices></div></fieldset></div>
-        <div class="booking-step" data-booking-step="4"><fieldset><legend>¿A nombre de quién?</legend><p>Completa los campos para ver la confirmación de la demo.</p><div class="form-grid"><label><span>Nombre</span><input type="text" name="name" autocomplete="name" required placeholder="Tu nombre"></label><label><span>Teléfono</span><input type="tel" name="phone" autocomplete="tel" required placeholder="600 000 000"></label><label class="form-wide"><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="tu@email.com"></label></div><p class="form-error" data-form-error role="alert"></p></fieldset></div>
-        <div class="booking-step booking-success" data-booking-step="5"><div class="success-mark">✓</div><p class="success-label">Demo completada</p><h3>¡Ese primer paso ya está!</h3><p>Así vería una persona la confirmación. No se ha enviado ni guardado ningún dato.</p><div class="booking-summary" data-booking-summary></div></div>
+        <div class="booking-step is-active" data-booking-step="1"><fieldset><legend>¿Qué quieres reservar?</legend><p>Elige clases regulares o una plaza para un evento.</p><div class="choice-grid" data-purpose-choices></div></fieldset></div>
+        <div class="booking-step" data-booking-step="2"><fieldset><legend>¿Dónde quieres bailar?</legend><p>Elige la sede que te viene mejor.</p><div class="choice-grid" data-location-choices></div></fieldset></div>
+        <div class="booking-step" data-booking-step="3"><fieldset><legend data-selection-title>Elige tu opción</legend><p data-selection-copy>Selecciona una clase o un evento.</p><div data-class-booking-fields><div class="choice-grid choice-grid--classes" data-class-choices></div><div class="level-choices" data-level-choices></div></div><div class="choice-grid choice-grid--events" data-event-choices hidden></div></fieldset></div>
+        <div class="booking-step" data-booking-step="4"><fieldset><legend data-slot-title>Elige fecha y hora</legend><p data-slot-copy>Selecciona la opción que te viene mejor.</p><div class="slot-grid" data-slot-choices></div></fieldset></div>
+        <div class="booking-step" data-booking-step="5"><fieldset><legend>¿A nombre de quién?</legend><p>Completa los campos para ver la confirmación de la demo.</p><div class="form-grid"><label><span>Nombre</span><input type="text" name="name" autocomplete="name" required placeholder="Tu nombre"></label><label><span>Teléfono</span><input type="tel" name="phone" autocomplete="tel" required placeholder="600 000 000"></label><label class="form-wide"><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="tu@email.com"></label></div><p class="form-error" data-form-error role="alert"></p></fieldset></div>
+        <div class="booking-step booking-success" data-booking-step="6"><div class="success-mark">✓</div><p class="success-label">Demo completada</p><h3>¡Tu plaza está preparada!</h3><p>Así vería una persona la confirmación. No se ha enviado, guardado ni cobrado ningún dato.</p><div class="booking-summary" data-booking-summary></div></div>
         <footer class="booking-actions"><button class="button button--ghost" type="button" data-booking-back>Atrás</button><button class="button button--primary" type="button" data-booking-next>Continuar</button><button class="button button--primary" type="submit" data-booking-confirm hidden>Ver confirmación</button><button class="button button--primary" type="button" data-booking-finish hidden>Cerrar demo</button></footer>
       </form>
     </section>
@@ -132,6 +147,11 @@
         { id: 'salsa', name: 'Salsa', levels: ['Desde cero', 'Intermedio'] },
         { id: 'bachata', name: 'Bachata', levels: ['Desde cero', 'Intermedio'] },
         { id: 'kizomba', name: 'Kizomba', levels: ['Iniciación'] }
+      ],
+      events: [
+        { id: 'event-1', name: 'Salsa session', location: 'Almería', sessions: [{ day: 'Próximamente', time: 'Por confirmar' }] },
+        { id: 'event-2', name: 'Bachata open class', location: 'Aguadulce', sessions: [{ day: 'Próximamente', time: 'Por confirmar' }] },
+        { id: 'event-3', name: 'Noche social', location: 'Almería', sessions: [{ day: 'Próximamente', time: 'Por confirmar' }] }
       ],
       slots: [
         { day: 'Lunes', time: '20:30' }, { day: 'Martes', time: '21:30' },

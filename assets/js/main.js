@@ -135,17 +135,36 @@
         const backButton = modal.querySelector('[data-booking-back]');
         const confirmButton = modal.querySelector('[data-booking-confirm]');
         const finishButton = modal.querySelector('[data-booking-finish]');
+        const purposesRoot = modal.querySelector('[data-purpose-choices]');
         const locationsRoot = modal.querySelector('[data-location-choices]');
         const classesRoot = modal.querySelector('[data-class-choices]');
+        const eventsRoot = modal.querySelector('[data-event-choices]');
+        const classFields = modal.querySelector('[data-class-booking-fields]');
         const levelsRoot = modal.querySelector('[data-level-choices]');
         const slotsRoot = modal.querySelector('[data-slot-choices]');
+        const selectionTitle = modal.querySelector('[data-selection-title]');
+        const selectionCopy = modal.querySelector('[data-selection-copy]');
+        const slotTitle = modal.querySelector('[data-slot-title]');
+        const slotCopy = modal.querySelector('[data-slot-copy]');
         const formError = modal.querySelector('[data-form-error]');
         const summary = modal.querySelector('[data-booking-summary]');
-        const labels = ['Sede', 'Ritmo y nivel', 'Horario', 'Tus datos', 'Confirmación'];
-        const state = { step: 1, location: '', classId: '', level: '', slot: '' };
+        const labels = ['Reserva', 'Sede', 'Clase o evento', 'Fecha y hora', 'Tus datos', 'Confirmación'];
+        const state = { step: 1, purpose: '', location: '', classId: '', eventId: '', level: '', slot: '' };
         let opener = null;
 
         const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;' })[char]);
+
+        const renderPurposes = () => {
+            const choices = [
+                { id: 'class', name: 'Clases', description: 'Horarios regulares y clase de prueba' },
+                { id: 'event', name: 'Eventos', description: 'Reserva una plaza para la próxima cita' },
+            ];
+            purposesRoot.innerHTML = choices.map((choice) => `
+                <button class="choice-card${state.purpose === choice.id ? ' is-selected' : ''}" type="button" data-purpose="${choice.id}" aria-pressed="${state.purpose === choice.id}">
+                    <strong>${choice.name}</strong><span>${choice.description}</span>
+                </button>
+            `).join('');
+        };
 
         const renderLocations = () => {
             locationsRoot.innerHTML = config.locations.map((location) => `
@@ -164,6 +183,22 @@
             renderLevels();
         };
 
+        const renderEvents = () => {
+            eventsRoot.innerHTML = (config.events || []).map((item) => `
+                <button class="choice-card${state.eventId === item.id ? ' is-selected' : ''}" type="button" data-booking-event="${escapeHtml(item.id)}" aria-pressed="${state.eventId === item.id}">
+                    <strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(item.location)}</span>
+                </button>
+            `).join('');
+        };
+
+        const syncSelectionMode = () => {
+            const isEvent = state.purpose === 'event';
+            classFields.hidden = isEvent;
+            eventsRoot.hidden = !isEvent;
+            if (selectionTitle) selectionTitle.textContent = isEvent ? 'Elige un evento' : '¿Qué te apetece aprender?';
+            if (selectionCopy) selectionCopy.textContent = isEvent ? 'Selecciona la cita para la que quieres reservar.' : 'Elige ritmo y nivel. Puedes cambiarlo después.';
+        };
+
         const renderLevels = () => {
             const chosen = config.classes.find((item) => item.id === state.classId);
             if (!chosen) {
@@ -176,7 +211,11 @@
         };
 
         const renderSlots = () => {
-            slotsRoot.innerHTML = config.slots.map((slot) => {
+            const chosenEvent = (config.events || []).find((item) => item.id === state.eventId);
+            const availableSlots = state.purpose === 'event' ? (chosenEvent?.sessions || []) : config.slots;
+            if (slotTitle) slotTitle.textContent = state.purpose === 'event' ? 'Confirma la fecha' : 'Elige un horario';
+            if (slotCopy) slotCopy.textContent = state.purpose === 'event' ? 'La fecha definitiva se confirmará antes de realizar cualquier pago.' : 'Selecciona la opción que te viene mejor.';
+            slotsRoot.innerHTML = availableSlots.map((slot) => {
                 const key = `${slot.day}|${slot.time}`;
                 return `<button class="slot-card${state.slot === key ? ' is-selected' : ''}" type="button" data-slot="${escapeHtml(key)}" aria-pressed="${state.slot === key}"><strong>${escapeHtml(slot.day)}</strong><span>${escapeHtml(slot.time)}</span></button>`;
             }).join('');
@@ -199,30 +238,38 @@
         };
 
         const showStep = (step) => {
-            state.step = Math.max(1, Math.min(5, step));
+            state.step = Math.max(1, Math.min(6, step));
             steps.forEach((item) => item.classList.toggle('is-active', Number(item.dataset.bookingStep) === state.step));
-            if (progress) progress.style.transform = `scaleX(${state.step / 5})`;
+            if (progress) progress.style.transform = `scaleX(${state.step / 6})`;
             progress?.parentElement?.setAttribute('aria-valuenow', String(state.step));
             if (stepCurrent) stepCurrent.textContent = String(state.step);
             if (stepLabel) stepLabel.textContent = labels[state.step - 1];
-            backButton.hidden = state.step === 1 || state.step === 5;
-            nextButton.hidden = state.step >= 4;
-            confirmButton.hidden = state.step !== 4;
-            finishButton.hidden = state.step !== 5;
+            backButton.hidden = state.step === 1 || state.step === 6;
+            nextButton.hidden = state.step >= 5;
+            confirmButton.hidden = state.step !== 5;
+            finishButton.hidden = state.step !== 6;
             clearErrors();
             panel.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
         };
 
         const validateStep = () => {
-            if (state.step === 1 && !state.location) {
+            if (state.step === 1 && !state.purpose) {
+                selectionError('Elige clases o eventos para continuar.');
+                return false;
+            }
+            if (state.step === 2 && !state.location) {
                 selectionError('Elige una sede para continuar.');
                 return false;
             }
-            if (state.step === 2 && (!state.classId || !state.level)) {
+            if (state.step === 3 && state.purpose === 'class' && (!state.classId || !state.level)) {
                 selectionError('Elige un ritmo y un nivel para continuar.');
                 return false;
             }
-            if (state.step === 3 && !state.slot) {
+            if (state.step === 3 && state.purpose === 'event' && !state.eventId) {
+                selectionError('Elige un evento para continuar.');
+                return false;
+            }
+            if (state.step === 4 && !state.slot) {
                 selectionError('Elige uno de los horarios de demostración.');
                 return false;
             }
@@ -232,27 +279,35 @@
         const buildSummary = () => {
             const location = config.locations.find((item) => item.id === state.location);
             const danceClass = config.classes.find((item) => item.id === state.classId);
+            const event = (config.events || []).find((item) => item.id === state.eventId);
             const [day, time] = state.slot.split('|');
             summary.innerHTML = `
+                <div><span>Reserva</span><strong>${state.purpose === 'event' ? 'Evento' : 'Clase'}</strong></div>
                 <div><span>Sede</span><strong>${escapeHtml(location?.name || '')}</strong></div>
-                <div><span>Clase</span><strong>${escapeHtml(danceClass?.name || '')}, ${escapeHtml(state.level)}</strong></div>
-                <div><span>Horario</span><strong>${escapeHtml(day)}, ${escapeHtml(time)}</strong></div>
+                <div><span>${state.purpose === 'event' ? 'Evento' : 'Clase'}</span><strong>${state.purpose === 'event' ? escapeHtml(event?.name || '') : `${escapeHtml(danceClass?.name || '')}, ${escapeHtml(state.level)}`}</strong></div>
+                <div><span>Fecha</span><strong>${escapeHtml(day)}, ${escapeHtml(time)}</strong></div>
                 <div><span>Estado</span><strong>Solo demostración</strong></div>
             `;
         };
 
-        const reset = (presetClass = '') => {
+        const reset = (presetPurpose = '', presetClass = '', presetEvent = '') => {
             form.reset();
-            Object.assign(state, { step: 1, location: '', classId: presetClass, level: '', slot: '' });
+            Object.assign(state, { step: 1, purpose: presetPurpose, location: '', classId: presetClass, eventId: presetEvent, level: '', slot: '' });
+            renderPurposes();
             renderLocations();
             renderClasses();
+            renderEvents();
+            syncSelectionMode();
             renderSlots();
-            showStep(1);
+            showStep(presetPurpose ? 2 : 1);
         };
 
         const open = (button) => {
             opener = button;
-            reset(button?.dataset.class || '');
+            const presetClass = button?.dataset.class || '';
+            const presetEvent = button?.dataset.event || '';
+            const presetPurpose = button?.dataset.bookingType || (presetClass ? 'class' : presetEvent ? 'event' : '');
+            reset(presetPurpose, presetClass, presetEvent);
             modal.hidden = false;
             document.body.classList.add('booking-open');
             window.requestAnimationFrame(() => panel.focus());
@@ -266,6 +321,21 @@
 
         document.querySelectorAll('[data-open-booking]').forEach((button) => button.addEventListener('click', () => open(button)));
         modal.querySelectorAll('[data-close-booking]').forEach((button) => button.addEventListener('click', close));
+        purposesRoot.addEventListener('click', (event) => {
+            const button = event.target.closest('[data-purpose]');
+            if (!button) return;
+            state.purpose = button.dataset.purpose;
+            state.classId = '';
+            state.eventId = '';
+            state.level = '';
+            state.slot = '';
+            clearErrors();
+            renderPurposes();
+            renderClasses();
+            renderEvents();
+            syncSelectionMode();
+            renderSlots();
+        });
         locationsRoot.addEventListener('click', (event) => {
             const button = event.target.closest('[data-location]');
             if (!button) return;
@@ -280,6 +350,15 @@
             state.level = '';
             clearErrors();
             renderClasses();
+        });
+        eventsRoot.addEventListener('click', (event) => {
+            const button = event.target.closest('[data-booking-event]');
+            if (!button) return;
+            state.eventId = button.dataset.bookingEvent;
+            state.slot = '';
+            clearErrors();
+            renderEvents();
+            renderSlots();
         });
         levelsRoot.addEventListener('click', (event) => {
             const button = event.target.closest('[data-level]');
@@ -312,7 +391,7 @@
                 return;
             }
             buildSummary();
-            showStep(5);
+            showStep(6);
         });
 
         document.addEventListener('keydown', (event) => {
