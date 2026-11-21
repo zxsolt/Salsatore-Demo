@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es" class="js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demo visual de Salsatore Dance Studio: salsa, bachata y kizomba en Almería y Aguadulce.">
+  <title>Salsatore Dance Studio — Demo</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header" data-site-header>
+    <div class="header-shell">
+      <a class="brand" href="#inicio" aria-label="Salsatore Dance Studio, inicio"><img class="brand-logo" src="assets/images/logo-white.png" alt="Salsatore Dance Studio"></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="screen-reader-text">Abrir menú</span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal" data-site-nav>
+        <a href="#clases">Clases</a><a href="#horarios">Horarios</a><a href="#academia">Academia</a><a href="#novedades">Novedades</a><a href="#contacto">Contacto</a>
+      </nav>
+      <button class="button button--header" type="button" data-open-booking>Reservar una prueba</button>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true"><img src="assets/images/hero-dance-v2.jpg" alt="" fetchpriority="high"></div>
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <p class="hero-kicker">Salsa, bachata y kizomba</p>
+          <h1 id="hero-title">Tu semana pide <span>baile.</span></h1>
+          <p class="hero-lead">Aprende desde cero, conoce gente y disfruta la pista desde tu primera clase.</p>
+          <div class="hero-actions"><button class="button button--primary" type="button" data-open-booking>Reservar una prueba</button><a class="text-link" href="#clases">Ver clases</a></div>
+        </div>
+
+        <div class="social-stage" id="novedades" data-carousel aria-label="Novedades de Salsatore">
+          <div class="social-track" data-carousel-track>
+            <article class="social-card is-active" data-slide aria-hidden="false">
+              <div class="social-visual"><img src="assets/images/hero-dance-v2.jpg" alt="Pareja bailando salsa"></div>
+              <div class="social-content"><div class="social-topline"><span>@salsatore</span><span>17 AGO</span></div><h2>Una nueva temporada para bailarla contigo.</h2><p>Salsa, bachata y clases para todos los niveles.</p></div>
+            </article>
+            <article class="social-card" data-slide aria-hidden="true">
+              <div class="social-visual"><img src="assets/images/academy-class-v2.jpg" alt="Clase de baile en grupo" loading="lazy"></div>
+              <div class="social-content"><div class="social-topline"><span>@salsatore</span><span>10 MAY</span></div><h2>La pista se disfruta mejor entre todos.</h2><p>Aprende con calma, comparte el baile y disfruta del proceso.</p></div>
+            </article>
+            <article class="social-card" data-slide aria-hidden="true">
+              <div class="social-visual"><img src="assets/images/hero-dance-v2.jpg" alt="Pareja en una pista de baile" loading="lazy"></div>
+              <div class="social-content"><div class="social-topline"><span>@salsatore</span><span>HOY</span></div><h2>No necesitas saber bailar. Solo tener ganas.</h2><p>Elige sede, ritmo y horario para probar la experiencia.</p></div>
+            </article>
+          </div>
+          <div class="carousel-controls">
+            <button type="button" data-carousel-prev aria-label="Publicación anterior">←</button><p><span data-carousel-current>01</span><span>/</span><span data-carousel-total>03</span></p><button type="button" data-carousel-next aria-label="Publicación siguiente">→</button><button class="carousel-toggle" type="button" data-carousel-toggle aria-pressed="false">Pausar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="classes-section" id="clases" aria-labelledby="classes-title" data-reveal>
+      <div class="section-shell">
+        <div class="section-heading"><h2 id="classes-title">Encuentra tu ritmo.</h2><p><strong>Tres formas de entrar en la pista.</strong> Empieza desde cero o sigue creciendo con una progresión clara y un ambiente cercano.</p></div>
+        <div class="class-grid">
+          <article class="class-card class-card--salsa"><img src="assets/images/hero-dance-v2.jpg" alt="Pareja bailando salsa en el estudio" loading="lazy"><div class="class-card__scrim"></div><div class="class-card__content"><h3>Salsa</h3><p>Energía y musicalidad</p><button type="button" data-open-booking data-class="salsa">Probar salsa</button></div></article>
+          <article class="class-card class-card--bachata"><img src="assets/images/academy-class-v2.jpg" alt="Clase de bachata en grupo" loading="lazy"><div class="class-card__scrim"></div><div class="class-card__content"><h3>Bachata</h3><p>Conexión y sensibilidad</p><button type="button" data-open-booking data-class="bachata">Probar bachata</button></div></article>
+          <article class="class-card class-card--kizomba"><div class="class-card__pattern" aria-hidden="true">K</div><div class="class-card__content"><h3>Kizomba</h3><p>Calma y conexión</p><button type="button" data-open-booking data-class="kizomba">Probar kizomba</button></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="schedule-section" id="horarios" aria-labelledby="schedule-title" data-reveal>
+      <div class="section-shell schedule-layout">
+        <div class="schedule-copy"><h2 id="schedule-title">Baila cuando te venga bien.</h2><p>Clases de lunes a sábado en Almería y Aguadulce. Explora una muestra de horarios disponibles.</p><button class="button button--outline" type="button" data-open-booking>Reservar una prueba</button></div>
+        <div class="schedule-board" role="table" aria-label="Horarios orientativos">
+          <div class="schedule-row schedule-head" role="row"><span role="columnheader">Día</span><span role="columnheader">Clase</span><span role="columnheader">Hora</span></div>
+          <div class="schedule-row" role="row"><strong role="cell">Lunes</strong><span role="cell">Salsa desde cero</span><time role="cell">20:30</time></div>
+          <div class="schedule-row" role="row"><strong role="cell">Martes</strong><span role="cell">Bachata iniciación</span><time role="cell">21:30</time></div>
+          <div class="schedule-row" role="row"><strong role="cell">Miércoles</strong><span role="cell">Salsa intermedio</span><time role="cell">20:00</time></div>
+          <div class="schedule-row" role="row"><strong role="cell">Jueves</strong><span role="cell">Kizomba iniciación</span><time role="cell">21:00</time></div>
+          <p class="schedule-note">Horario de demostración. Confirma la programación con la academia.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="academy-section" id="academia" aria-labelledby="academy-title" data-reveal>
+      <div class="section-shell academy-layout">
+        <figure class="academy-photo"><img src="assets/images/academy-class-v2.jpg" alt="Clase de baile en grupo" loading="lazy"></figure>
+        <div class="academy-copy"><h2 id="academy-title">Aprender bien. Pasarlo mejor.</h2><p class="academy-intro">Aquí no vienes a demostrar nada. Vienes a aprender, conectar y disfrutar cada avance.</p><blockquote>La técnica importa, pero la pista cobra sentido cuando te sientes a gusto.</blockquote><div class="academy-values"><span>Técnica clara</span><span>Ambiente cercano</span><span>Progresión real</span></div></div>
+      </div>
+    </section>
+
+    <section class="trial-section" aria-labelledby="trial-title" data-reveal><div class="trial-shell"><h2 id="trial-title">Tu primer paso empieza aquí.</h2><p>Elige sede, ritmo y horario en menos de un minuto.</p><button class="button button--light button--large" type="button" data-open-booking>Reservar una prueba</button></div></section>
+  </main>
+
+  <footer class="site-footer" id="contacto">
+    <div class="footer-mark" aria-hidden="true">BAILA</div>
+    <div class="footer-shell">
+      <div class="footer-brand"><img src="assets/images/logo-white.png" alt="Salsatore Dance Studio"><p>Baila. Conecta. Disfruta.</p></div>
+      <div><p class="footer-label">Hablemos</p><a href="tel:+34667040252">+34 667 040 252</a><a href="mailto:salsatore@salsatore.com">salsatore@salsatore.com</a></div>
+      <div><p class="footer-label">Sedes</p><p>Almería, C. Antonio Muñoz Zamora, 5</p><p>Aguadulce, Camino del Pocico</p></div>
+      <div class="footer-action"><button class="button button--light" type="button" data-open-booking>Reservar una prueba</button><a class="instagram-link" href="https://www.instagram.com/salsatore/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Salsatore Dance Studio</span><span>Demo sin pagos ni envío de datos</span></div>
+  </footer>
+
+  <div class="booking-modal" data-booking-modal hidden>
+    <div class="booking-backdrop" data-close-booking></div>
+    <section class="booking-panel" role="dialog" aria-modal="true" aria-labelledby="booking-title" tabindex="-1" data-booking-panel>
+      <header class="booking-header"><div><h2 id="booking-title">Encuentra tu clase de prueba</h2></div><button type="button" class="booking-close" data-close-booking aria-label="Cerrar reserva">×</button></header>
+      <div class="booking-progress"><div class="booking-progress-bar" role="progressbar" aria-label="Progreso de la reserva" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"><span data-booking-progress></span></div><p><span data-step-label>Sede</span><strong><span data-step-current>1</span>/5</strong></p></div>
+      <div class="demo-notice"><span>i</span><p>Demostración: tus datos no se enviarán ni se guardarán.</p></div>
+      <form class="booking-form" data-booking-form novalidate>
+        <div class="booking-step is-active" data-booking-step="1"><fieldset><legend>¿Dónde quieres bailar?</legend><p>Elige la sede que te viene mejor.</p><div class="choice-grid" data-location-choices></div></fieldset></div>
+        <div class="booking-step" data-booking-step="2"><fieldset><legend>¿Qué te apetece aprender?</legend><p>Elige ritmo y nivel. Puedes cambiarlo después.</p><div class="choice-grid choice-grid--classes" data-class-choices></div><div class="level-choices" data-level-choices></div></fieldset></div>
+        <div class="booking-step" data-booking-step="3"><fieldset><legend>Elige un horario</legend><p>Disponibilidad ficticia para probar la interfaz.</p><div class="slot-grid" data-slot-choices></div></fieldset></div>
+        <div class="booking-step" data-booking-step="4"><fieldset><legend>¿A nombre de quién?</legend><p>Completa los campos para ver la confirmación de la demo.</p><div class="form-grid"><label><span>Nombre</span><input type="text" name="name" autocomplete="name" required placeholder="Tu nombre"></label><label><span>Teléfono</span><input type="tel" name="phone" autocomplete="tel" required placeholder="600 000 000"></label><label class="form-wide"><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="tu@email.com"></label></div><p class="form-error" data-form-error role="alert"></p></fieldset></div>
+        <div class="booking-step booking-success" data-booking-step="5"><div class="success-mark">✓</div><p class="success-label">Demo completada</p><h3>¡Ese primer paso ya está!</h3><p>Así vería una persona la confirmación. No se ha enviado ni guardado ningún dato.</p><div class="booking-summary" data-booking-summary></div></div>
+        <footer class="booking-actions"><button class="button button--ghost" type="button" data-booking-back>Atrás</button><button class="button button--primary" type="button" data-booking-next>Continuar</button><button class="button button--primary" type="submit" data-booking-confirm hidden>Ver confirmación</button><button class="button button--primary" type="button" data-booking-finish hidden>Cerrar demo</button></footer>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    window.SalsatoreDemo = {
+      locations: [
+        { id: 'almeria', name: 'Almería', address: 'C. Antonio Muñoz Zamora, 5' },
+        { id: 'aguadulce', name: 'Aguadulce', address: 'Camino del Pocico' }
+      ],
+      classes: [
+        { id: 'salsa', name: 'Salsa', levels: ['Desde cero', 'Intermedio'] },
+        { id: 'bachata', name: 'Bachata', levels: ['Desde cero', 'Intermedio'] },
+        { id: 'kizomba', name: 'Kizomba', levels: ['Iniciación'] }
+      ],
+      slots: [
+        { day: 'Lunes', time: '20:30' }, { day: 'Martes', time: '21:30' },
+        { day: 'Miércoles', time: '20:00' }, { day: 'Jueves', time: '21:00' }
+      ]
+    };
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
