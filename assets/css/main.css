@@ -80,8 +80,8 @@
 .class-card { position: relative; min-width: 0; overflow: clip; color: var(--color-ink); border-radius: var(--radius-card); background: var(--color-paper-2); isolation: isolate; }
 .class-card--salsa { grid-row: 1 / 3; }
 .class-card > img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.class-card--salsa > img { object-position: 60% center; }
-.class-card--bachata > img { object-position: center 42%; }
+.class-card--salsa > img { object-position: 72% center; }
+.class-card--bachata > img { object-position: center 52%; }
 .class-card__scrim { position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, var(--color-photo-shade), var(--color-photo-clear) 72%); }
 .class-card__content { position: absolute; inset: auto 0 0; padding: var(--space-xl); }
 .class-card h3 { margin: 0; color: var(--color-ink); font-size: var(--text-title); line-height: .95; }
