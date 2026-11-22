@@ -28,10 +28,61 @@
         });
         siteNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeNav));
 
+        initPagePolish();
         initCarousel();
         initBooking();
         initReveals();
     });
+
+    function initPagePolish() {
+        const header = document.querySelector('[data-site-header]');
+        const navLinks = [...document.querySelectorAll('[data-site-nav] a[href^="#"]')];
+        const favoriteButtons = [...document.querySelectorAll('[data-favorite-event]')];
+        const eventGrid = document.querySelector('[data-reference-event-grid]');
+        const eventNext = document.querySelector('[data-reference-event-next]');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const syncHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
+        syncHeader();
+        window.addEventListener('scroll', syncHeader, { passive: true });
+
+        favoriteButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const selected = button.getAttribute('aria-pressed') !== 'true';
+                button.setAttribute('aria-pressed', String(selected));
+                button.setAttribute('aria-label', selected ? 'Quitar evento de guardados' : 'Guardar evento');
+            });
+        });
+
+        eventNext?.addEventListener('click', () => {
+            if (!eventGrid) return;
+            if (window.matchMedia('(max-width: 48rem)').matches) {
+                const firstCard = eventGrid.querySelector('.reference-event-card');
+                eventGrid.scrollBy({ left: (firstCard?.getBoundingClientRect().width || 320) + 18, behavior: reduceMotion ? 'auto' : 'smooth' });
+                return;
+            }
+            eventGrid.classList.add('is-shuffling');
+            window.setTimeout(() => {
+                const firstCard = eventGrid.firstElementChild;
+                if (firstCard) eventGrid.append(firstCard);
+                eventGrid.querySelectorAll('.reference-event-card').forEach((card, index) => card.classList.toggle('reference-event-card--active', index === 1));
+                eventGrid.classList.remove('is-shuffling');
+            }, reduceMotion ? 0 : 180);
+        });
+
+        if (!('IntersectionObserver' in window)) return;
+        const sections = navLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+        const observer = new IntersectionObserver((entries) => {
+            const current = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (!current) return;
+            navLinks.forEach((link) => {
+                const active = link.getAttribute('href') === `#${current.target.id}`;
+                link.classList.toggle('is-current', active);
+                if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+            });
+        }, { rootMargin: '-28% 0px -58% 0px', threshold: [0, .15, .5] });
+        sections.forEach((section) => observer.observe(section));
+    }
 
     function initReveals() {
         const items = [...document.querySelectorAll('[data-reveal]')];
